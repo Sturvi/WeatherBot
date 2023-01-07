@@ -15,9 +15,10 @@ public class InputExportFromTelegram extends TelegramLongPollingBot {
 
     HashMap<String, Message> subscribers;
 
-    public InputExportFromTelegram(HashMap<String, Message>  subscribers) {
+    public InputExportFromTelegram(HashMap<String, Message> subscribers) {
         this.subscribers = subscribers;
     }
+
 
     @Override
     public void onUpdateReceived(Update update) {
@@ -80,7 +81,11 @@ public class InputExportFromTelegram extends TelegramLongPollingBot {
         KeyboardRow keyboardFirstRow = new KeyboardRow();
         KeyboardRow keyboardSecondRow = new KeyboardRow();
 
-        keyboardFirstRow.add(new KeyboardButton("Automatically get the weather for tomorrow"));
+        if (subscribers.containsKey(sendMessage.getChatId())){
+            keyboardFirstRow.add(new KeyboardButton("No more getting the weather for tomorrow"));
+        } else {
+            keyboardFirstRow.add(new KeyboardButton("Automatically get the weather for tomorrow"));
+        }
         keyboardSecondRow.add(new KeyboardButton("Get the weather forecast"));
 
         keyboardRowList.add(keyboardFirstRow);

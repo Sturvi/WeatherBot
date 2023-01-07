@@ -29,7 +29,7 @@ public class Weather {
                 " m/s\n" + weatherInterpretation(Integer.parseInt(currentWeatherCod)));
         message.add("Tomorrow's Weather Forecast:\nTemperature (min): " + tomorrowTempMin +
                 "°C \nTemperature (max): " + tomorrowTempMax + "°C \nWind Speed: " + tomorrowWindSpeed +
-                " m/s\n" + weatherInterpretation(Integer.parseInt(currentWeatherCod)));
+                " m/s\n" + weatherInterpretation(Integer.parseInt(tomorrowWeatherCod)));
 
         return message;
     }
@@ -44,7 +44,7 @@ public class Weather {
         LocalDate localDate = LocalDate.now().plusDays(1);
         return localDate + "Tomorrow's Weather Forecast:\nTemperature (min): " + tomorrowTempMin +
                 "°C \nTemperature (max): " + tomorrowTempMax + "°C \nWind Speed: " + tomorrowWindSpeed +
-                " m/s\n" + weatherInterpretation(Integer.parseInt(currentWeatherCod));
+                " m/s\n" + weatherInterpretation(Integer.parseInt(tomorrowWeatherCod));
     }
 
 
@@ -119,7 +119,7 @@ public class Weather {
         JSONObject currentWeather = jsonObject.getJSONObject("current_weather");
         currentTemp = String.valueOf(currentWeather.getDouble("temperature"));
         currentWindSpeed = String.valueOf(currentWeather.getDouble("windspeed"));
-        currentWeatherCod = String.valueOf(currentWeather.getInt("weathercode"));
+        currentWeatherCod = String.valueOf(currentWeather.getInt("weathercode")).replaceAll(".0", "");
 
         JSONObject dailyWeather = jsonObject.getJSONObject("daily");
         JSONArray temp = dailyWeather.getJSONArray("temperature_2m_min");
@@ -127,7 +127,7 @@ public class Weather {
         temp = dailyWeather.getJSONArray("temperature_2m_max");
         tomorrowTempMax = String.valueOf(temp.getDouble(0));
         temp = dailyWeather.getJSONArray("weathercode");
-        tomorrowWeatherCod = String.valueOf(temp.getDouble(0));
+        tomorrowWeatherCod = String.valueOf(temp.getDouble(0)).replaceAll(".0", "");
         temp = dailyWeather.getJSONArray("windspeed_10m_max");
         tomorrowWindSpeed = String.valueOf(temp.getDouble(0));
     }

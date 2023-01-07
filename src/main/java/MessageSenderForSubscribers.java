@@ -1,9 +1,9 @@
-import org.telegram.telegrambots.meta.api.methods.groupadministration.DeleteChatStickerSet;
 import org.telegram.telegrambots.meta.api.objects.Message;
 
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 public class MessageSenderForSubscribers extends Thread {
     HashMap<String, Message> subscribers;
@@ -13,7 +13,8 @@ public class MessageSenderForSubscribers extends Thread {
         this.subscribers = subscribers;
     }
 
-    public void start() {
+    public void run() {
+
         LocalDateTime timeToSendMessages = LocalDateTime.now();
         if (timeToSendMessages.getHour() >= 21) {
             timeToSendMessages = timeToSendMessages.withDayOfMonth(timeToSendMessages.getDayOfMonth() + 1);
