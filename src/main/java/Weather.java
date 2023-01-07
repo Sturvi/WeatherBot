@@ -1,11 +1,10 @@
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import javax.management.modelmbean.ModelMBean;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.MalformedURLException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -34,6 +33,20 @@ public class Weather {
 
         return message;
     }
+
+    public String getOnlyTomorrowWeather() {
+        try {
+            getWeatherFromAPI();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        LocalDate localDate = LocalDate.now().plusDays(1);
+        return localDate + "Tomorrow's Weather Forecast:\nTemperature (min): " + tomorrowTempMin +
+                "°C \nTemperature (max): " + tomorrowTempMax + "°C \nWind Speed: " + tomorrowWindSpeed +
+                " m/s\n" + weatherInterpretation(Integer.parseInt(currentWeatherCod));
+    }
+
 
     private String weatherInterpretation(int code) {
         switch (code) {
