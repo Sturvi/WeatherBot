@@ -33,14 +33,14 @@ public class InputExportFromTelegram extends TelegramLongPollingBot {
                 getCurrentWeather(message);
                 break;
             case ("/start"):
-                sendMsg(message, "Welcome to Mersin Weather Bot");
+                sendMsg(message, "Welcome to Baku Weather Bot");
                 break;
             case ("Automatically get the weather for tomorrow"):
                 if (!subscribers.containsKey(message.getChatId().toString())) {
                     subscribers.put(message.getChatId().toString(), message);
                     backupSubs(message);
                 }
-                sendMsg(message, "You will receive the weather for tomorrow every evening at 21:00 GTM +3");
+                sendMsg(message, "You will receive the weather for tomorrow every evening at 21:00 GTM +4");
                 break;
             case ("No more getting the weather for tomorrow"):
                 if (subscribers.containsKey(message.getChatId().toString())) {
@@ -55,36 +55,33 @@ public class InputExportFromTelegram extends TelegramLongPollingBot {
     }
 
     private void saveUsersData(Message message) {
-        File usersDataDir = new File("All User");
+        File usersDataDir = new File("/Bots/BakuWeatherBot/All User");
         if (!usersDataDir.exists()){
             usersDataDir.mkdirs();
         }
 
-        File file = new File("All User/" + message.getChatId().toString() + ".txt");
-        try (PrintWriter printWriter = new PrintWriter(file);
-        FileWriter fileWriter = new FileWriter(file);){
-            fileWriter.write(message.getContact().toString());
+        File file = new File("/Bots/BakuWeatherBot/All User/" + message.getChatId().toString() + ".txt");
+        try (PrintWriter printWriter = new PrintWriter(file);){
+
         } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
 
     private void deleteSubs(Message message) {
         //File file = new File("/Bots/MersinWeatherBot/backupSub/" + message.getChatId().toString() + ".txt");
-        File file = new File("backupSub/" + message.getChatId().toString() + ".txt");
+        File file = new File("/Bots/BakuWeatherBot/backupSub/" + message.getChatId().toString() + ".txt");
         file.delete();
     }
 
     private void backupSubs(Message message) {
         //File file = new File("/Bots/MersinWeatherBot/backupSub/" + message.getChatId().toString() + ".txt");
-        File dirForBackup = new File("backupSub");
+        File dirForBackup = new File("/Bots/BakuWeatherBot/backupSub");
         if (!dirForBackup.exists()) {
             dirForBackup.mkdirs();
         }
 
-        File file = new File("backupSub/" + message.getChatId().toString() + ".txt");
+        File file = new File("/Bots/BakuWeatherBot/backupSub/" + message.getChatId().toString() + ".txt");
         try (PrintWriter printWriter = new PrintWriter(file);
              FileOutputStream fos = new FileOutputStream(file);
              ObjectOutputStream objectOutputStream = new ObjectOutputStream(fos)) {
@@ -142,11 +139,11 @@ public class InputExportFromTelegram extends TelegramLongPollingBot {
 
     @Override
     public String getBotUsername() {
-        return "WeatherInMersinBot";
+        return "BakuWeatherBot";
     }
 
     @Override
     public String getBotToken() {
-        return "5589399615:AAEymBtNIJo-EP6kKFtm5Hr3uMdn4oVm9zo";
+        return "5854170777:AAFFYS-9R2md0zd-ERnYNGDuwHbrKDxBn1Q";
     }
 }

@@ -42,7 +42,7 @@ public class Weather {
         }
 
         LocalDate localDate = LocalDate.now().plusDays(1);
-        return localDate + "Tomorrow's Weather Forecast:\nTemperature (min): " + tomorrowTempMin +
+        return localDate + "\nTomorrow's Weather Forecast:\nTemperature (min): " + tomorrowTempMin +
                 "°C \nTemperature (max): " + tomorrowTempMax + "°C \nWind Speed: " + tomorrowWindSpeed +
                 " m/s\n" + weatherInterpretation(Integer.parseInt(tomorrowWeatherCod));
     }
@@ -105,7 +105,8 @@ public class Weather {
     }
 
     public void getWeatherFromAPI() throws IOException {
-        URL url = new URL("https://api.open-meteo.com/v1/forecast?latitude=36.81&longitude=34.64&hourly=temperature_2m,weathercode&models=best_match&daily=weathercode,temperature_2m_max,temperature_2m_min,windspeed_10m_max&current_weather=true&windspeed_unit=ms&timezone=auto");
+        //Mersin URL url = new URL("https://api.open-meteo.com/v1/forecast?latitude=36.81&longitude=34.64&hourly=temperature_2m,weathercode&models=best_match&daily=weathercode,temperature_2m_max,temperature_2m_min,windspeed_10m_max&current_weather=true&windspeed_unit=ms&timezone=auto");
+        URL url = new URL("https://api.open-meteo.com/v1/forecast?latitude=40.38&longitude=49.89&hourly=temperature_2m,weathercode&models=best_match&daily=weathercode,temperature_2m_max,temperature_2m_min,windspeed_10m_max&current_weather=true&windspeed_unit=ms&timezone=auto");
 
         Scanner scanner = new Scanner((InputStream) url.getContent());
         StringBuilder result = new StringBuilder();

@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="WeatherBot">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/out/artifacts/WeatherBot_jar/WeatherBot.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="RemoteTargetsManager">
+    <targets>
+      <target name="root@62.113.100.140:22" type="ssh/sftp" uuid="3042433e-55d0-46fd-9c72-344d0e3120ed">
+        <config>
+          <option name="projectRootOnTarget" value="/root/WeatherBot" />
+          <option name="serverName" value="root@62.113.100.140:22 password" />
+          <option name="useRsync" value="true" />
+        </config>
+        <ContributedStateBase type="JavaLanguageRuntime">
+          <config>
+            <option name="homePath" value="/" />
+            <option name="javaVersionString" value="19.0.1" />
+          </config>
+        </ContributedStateBase>
+      </target>
+    </targets>
+  </component>
+</project>
