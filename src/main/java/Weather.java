@@ -47,7 +47,6 @@ public class Weather {
                 " m/s\n" + weatherInterpretation(Integer.parseInt(tomorrowWeatherCod));
     }
 
-
     private String weatherInterpretation(int code) {
         switch (code) {
             case (0):
