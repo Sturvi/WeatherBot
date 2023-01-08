@@ -15,6 +15,19 @@
           </config>
         </ContributedStateBase>
       </target>
+      <target name="root@62.113.100.140:222" type="ssh/sftp" uuid="39d98e67-33c2-4173-9529-b2330257d38f">
+        <config>
+          <option name="projectRootOnTarget" value="/root/WeatherBot" />
+          <option name="serverName" value="root@62.113.100.140:22 password" />
+          <option name="useRsync" value="true" />
+        </config>
+        <ContributedStateBase type="JavaLanguageRuntime">
+          <config>
+            <option name="homePath" value="/" />
+            <option name="javaVersionString" value="19.0.1" />
+          </config>
+        </ContributedStateBase>
+      </target>
     </targets>
   </component>
 </project>
