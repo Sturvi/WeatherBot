@@ -9,7 +9,7 @@ import java.util.Map;
 public class MessageSenderForSubscribers extends Thread {
     HashMap<String, Message> subscribers;
     LocalDateTime timeToSendMessages;
-    ZoneId timeZone = ZoneId.of("Etc/GMT-4");
+    ZoneId timeZone = ZoneId.of("UTC+4");
 
     public MessageSenderForSubscribers(HashMap<String, Message> subscribers) {
         this.subscribers = subscribers;
@@ -78,7 +78,7 @@ public class MessageSenderForSubscribers extends Thread {
     private void setMessageSendTime() {
         timeToSendMessages = LocalDateTime.now(timeZone);
         timeToSendMessages = timeToSendMessages.withHour(21);
-        timeToSendMessages = timeToSendMessages.withMinute(00);
+        timeToSendMessages = timeToSendMessages.withMinute(30);
         timeToSendMessages = timeToSendMessages.withSecond(00);
         LocalDateTime currentTime = LocalDateTime.now(timeZone);
         if (timeToSendMessages.isBefore(currentTime)) {
